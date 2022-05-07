@@ -1,0 +1,54 @@
+const UserModel = require('./user.model')
+
+// get
+
+async function getUser(req, res) {
+    try {
+        const user = await UserModel.find({})
+        return res.status(200).send(user)
+    } catch (err) {
+        res.status(400).send(err)
+    }
+}
+
+// post 
+
+async function addUser(req, res) {
+    try {
+        const user = await UserModel.create(req.body)
+        return res.status(200).send(user)
+    } catch (err) {
+        res.status(400).send(err)
+    }
+}
+
+// update / put
+
+async function updateUser(req, res){
+    try{
+        let userId = req.params.id
+        let result = await UserModel.findByIdAndUpdate(userId, req.body)
+        return res.status(200).send(result)
+    } catch(err){
+        res.status(400).send(err)
+    }
+}
+
+// delete
+
+async function deleteUser(req, res){
+    try{
+        let userId = req.params.id
+        let result = await UserModel.findByIdAndRemove(userId)
+        return res.status(200).send(result)
+    } catch(err){
+        res.status(400).send(err)
+    }
+}
+
+module.exports = {
+    getUser,
+    addUser,
+    updateUser,
+    deleteUser
+}
