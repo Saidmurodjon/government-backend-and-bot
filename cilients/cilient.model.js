@@ -9,7 +9,8 @@ const cilientsSchema = mongoose.Schema({
     bolim:String,
     lavozim:String,
     texnikBaza:[Object],
-    tel:String
+    tel:String,
+    date:Date
 })
 
 const CilientModel = mongoose.model('CilientModel' , cilientsSchema)

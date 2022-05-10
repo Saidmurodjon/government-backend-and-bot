@@ -24,5 +24,5 @@ mongoose
 app.use("/", appRouter);
 
 app.listen(5000, () => {
-  console.log("5000 port ishga tushdi");
+  console.log("5000's port is working");
 });
