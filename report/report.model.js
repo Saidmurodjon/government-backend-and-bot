@@ -1,5 +1,4 @@
-const mongoose = require('mongoose')
-
+const mongoose = require("mongoose");
 
 // product uchun
 
@@ -12,13 +11,13 @@ const reportSchema = mongoose.Schema({
   cilientBolim: String,
   cilientKabinet: String,
   tasdiq: Boolean,
-  chatID:String,    
+  chatID: String,
   fullFData: Date,
-  chatID:String
+  chatID: String,
+  countYear: Number,
+  countMonth: Number,
 });
 
-const ReportModel = mongoose.model('ReportModel' , reportSchema)
+const ReportModel = mongoose.model("ReportModel", reportSchema);
 
-
-
-module.exports = ReportModel
+module.exports = ReportModel;

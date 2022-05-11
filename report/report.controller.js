@@ -55,7 +55,7 @@ async function updateReport(req, res) {
     try {
         let userId = req.params.id
         let repo = await ReportModel.findOne({ _id: userId })
-        console.log(repo)
+        // console.log(repo)
         repo.userName = req.body.userName
         repo.userFish = req.body.userFish
         repo.userlav = req.body.userlav
