@@ -15,6 +15,9 @@ router.route('/').post(cilientController.addCilient)
 
 router.route('/:id').put(cilientController.updateCilient)
 
+//
+router.route('baza/:id').post(cilientController.addBaza)
+
 // delete
 
 router.route('/:id').delete(cilientController.deleteCilient)

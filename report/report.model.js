@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const reportSchema = mongoose.Schema({
   userName: String,
   userFish: String,
-  userlar: String,
+  userlav: String,
   services: [Object],
   cilientFish: String,
   cilientBolim: String,

@@ -5,8 +5,12 @@ const reportController = require('./report.controller')
 
 // get
 
-router.route('/').get(reportController.getReport)
+router.route('/:id').get(reportController.getReport)
 
+router.route('/').get(reportController.getReport1)
+
+// userHistory
+router.route('/user/:userName').get(reportController.getReport2)
 // post
 
 router.route('/').post(reportController.addReport)
