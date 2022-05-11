@@ -10,6 +10,10 @@ router.route('/').get(userController.getUser)
 
 router.route('/').post(userController.addUser)
 
+
+
+router.route('/auth').post(userController.chackUser)
+
 // put
 
 router.route('/:id').put(userController.updateUser)

@@ -46,9 +46,22 @@ async function deleteUser(req, res){
     }
 }
 
+async function chackUser(req, res){
+    try{
+        let result = await UserModel.findOne({parol:req.body.parol})
+        if(result){
+            return res.status(200).send(result)
+        }
+        return res.status(401).send("ushbu foydalanuvchi mavjud emas")
+    } catch(err){
+        res.status(400).send(err)
+    }
+}
+
 module.exports = {
     getUser,
     addUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    chackUser
 }
