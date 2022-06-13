@@ -10,7 +10,8 @@ const cilientsSchema = mongoose.Schema({
     lavozim:String,
     texnikBaza:[Object],
     tel:String,
-    date:Date
+    date:Date,
+    chatID:String
 })
 
 const CilientModel = mongoose.model('CilientModel' , cilientsSchema)

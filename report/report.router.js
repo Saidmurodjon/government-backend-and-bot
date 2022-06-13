@@ -8,6 +8,8 @@ const reportController = require('./report.controller')
 router.route('/:id').get(reportController.getReport)
 
 router.route('/').get(reportController.getReport1)
+// filter uchun
+router.route("/filter").post(reportController.getReportFilter);
 
 // userHistory
 router.route('/user/:userName').get(reportController.getReport2)
