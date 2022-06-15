@@ -1,15 +1,21 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const userRouter = require('./users/user.router')
-const cilientsRouter = require('./cilients/cilient.router')
-const reportRouter = require('./report/report.router')
-const serviceRouter = require('./services/services.router')
-
+const userRouter = require("./users/user.router");
+const cilientsRouter = require("./cilients/cilient.router");
+const reportRouter = require("./report/report.router");
+const serviceRouter = require("./services/services.router");
+const bolimRouter = require("./bolim/bolim.router");
+const xonaRouter = require("./xona/xona.router");
+const lavozimRouter=require("./lavozim/lavozim.router")
 // router
-router.use('/cilient' , cilientsRouter)
-router.use('/report' , reportRouter)
-router.use('/user' , userRouter)
-router.use('/service' , serviceRouter)
+router.use("/cilient", cilientsRouter);
+router.use("/report", reportRouter);
+router.use("/user", userRouter);
+router.use("/service", serviceRouter);
+router.use("/bolim", bolimRouter);
+router.use("/xona", xonaRouter);
+router.use("/lavozim", lavozimRouter);
 
-module.exports = router
+
+module.exports = router;
