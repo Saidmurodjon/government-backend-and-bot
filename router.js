@@ -8,6 +8,7 @@ const serviceRouter = require("./services/services.router");
 const bolimRouter = require("./bolim/bolim.router");
 const xonaRouter = require("./xona/xona.router");
 const lavozimRouter=require("./lavozim/lavozim.router")
+const xisobotRouter=require("./xisobot/xisobot.router")
 // router
 router.use("/cilient", cilientsRouter);
 router.use("/report", reportRouter);
@@ -16,6 +17,7 @@ router.use("/service", serviceRouter);
 router.use("/bolim", bolimRouter);
 router.use("/xona", xonaRouter);
 router.use("/lavozim", lavozimRouter);
+router.use("/xisobot", xisobotRouter);
 
 
 module.exports = router;
