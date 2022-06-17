@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const usersSchema = mongoose.Schema({
     tash:String,
-    lavoz:String,
+    lavozim:String,
     fish:String,
     ismi:String,
     tel:String,
