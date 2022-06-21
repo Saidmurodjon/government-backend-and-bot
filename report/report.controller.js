@@ -29,11 +29,13 @@ async function getReportFilter(req, res) {
     const report = await ReportModel.find({});
     const foo = report.filter(
       (e) =>
-        new Date(e.fullFData).getFullYear() === (req.body.year*1 )&&
-        new Date(e.fullFData).getMonth()+1=== (req.body.month*1)
+        new Date(e.fullFData).getFullYear() === req.body.year * 1 &&
+        new Date(e.fullFData).getMonth() + 1 === req.body.month * 1
     );
     if (foo) {
-      return res.status(200).send(foo);
+      const newArray = [];
+      foo.map((e) => e.services.map((i) => newArray.push(i)));
+      return res.status(200).send(newArray);
     } else {
       return res.status(200).send("report");
     }
