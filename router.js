@@ -10,6 +10,7 @@ const xonaRouter = require("./xona/xona.router");
 const lavozimRouter=require("./lavozim/lavozim.router")
 const xisobotRouter=require("./xisobot/xisobot.router")
 const tashkilotRouter=require("./tashkilot/tashkilot.router")
+const ishRouter=require("./ish/ish.router")
 // router
 router.use("/cilient", cilientsRouter);
 router.use("/report", reportRouter);
@@ -20,6 +21,8 @@ router.use("/xona", xonaRouter);
 router.use("/lavozim", lavozimRouter);
 router.use("/xisobot", xisobotRouter);
 router.use("/tashkilot", tashkilotRouter);
+router.use("/ish", ishRouter);
+
 
 
 
