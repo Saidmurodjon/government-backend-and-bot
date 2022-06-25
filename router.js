@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
+// const path=require('path')
 
+const auth=require('./jwt/auth')
+const jwtVerify=require('./jwt/jwtVerify')
 const userRouter = require("./users/user.router");
 const cilientsRouter = require("./cilients/cilient.router");
 const reportRouter = require("./report/report.router");
@@ -15,6 +18,8 @@ const ishRouter=require("./ish/ish.router")
 const deviceRouter=require("./device/device.router")
 const deviceElemRouter=require("./device-elem/device-elem.router")
 // router
+router.use('/login',auth)
+router.use(jwtVerify)
 router.use("/cilient", cilientsRouter);
 router.use("/report", reportRouter);
 router.use("/user", userRouter);
