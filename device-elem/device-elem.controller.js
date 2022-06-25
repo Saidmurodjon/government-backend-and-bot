@@ -1,5 +1,5 @@
 const DeviceElemModel = require("./device-elem.model");
-
+const DeviceModel = require("./../device/device.model");
 // get
 
 async function getDeviceElem(req, res) {
@@ -9,7 +9,8 @@ async function getDeviceElem(req, res) {
     if (device.length > 0) {
       return res.status(200).send(device);
     } else {
-      return res.status(404).send("not fund");
+      await DeviceModel.findByIdAndRemove(deviceId);
+      return res.status(404).send("not fount");
     }
   } catch (err) {
     res.status(400).send(err);
