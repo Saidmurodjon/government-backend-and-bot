@@ -38,7 +38,7 @@ router.route("/").post(async (req, res) => {
     //             type:"admin"
     //         })
     // }else
-    if ((req.body.login = "admin" && req.body.password == "admin")) {
+    if ((req.body.login = "admin" && req.body.password == "1020")) {
       const jwtToken = jwt.sign({ message: "tokencreated" }, config.secretKey, {
         expiresIn: config.expiresAt,
       });
