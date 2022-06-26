@@ -30,14 +30,17 @@ async function getReportFilter(req, res) {
     const foo = report.filter(
       (e) =>
         new Date(e.fullFData).getFullYear() === req.body.year * 1 &&
-        new Date(e.fullFData).getMonth() + 1 === req.body.month * 1
+        new Date(e.fullFData).getMonth() + 1 === req.body.month * 1 &&
+        e.tasdiq === true
     );
-    if (foo) {
+    if (foo && req.body.stat === true) {
       const newArray = [];
       foo.map((e) => e.services.map((i) => newArray.push(i)));
       return res.status(200).send(newArray);
+    } else if (foo) {
+      return res.status(200).send(foo);
     } else {
-      return res.status(200).send("report");
+      return res.status(404).send("Not Found");
     }
   } catch (err) {
     res.status(400).send(err);
