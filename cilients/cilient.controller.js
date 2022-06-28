@@ -32,7 +32,7 @@ async function updateCilient(req, res){
         return res.status(200).send(result)
     } catch(err){
         res.status(400).send(err)
-    }
+    }   
 }
 
 // addBaza
