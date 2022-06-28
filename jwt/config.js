@@ -1,4 +1,4 @@
-module.exports={
-   secretKey:"edu", 
-   expiresAt:3600
-}
+module.exports = {
+  secretKey: "edu",
+  expiresAt: 7200,
+};
