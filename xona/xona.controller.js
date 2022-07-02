@@ -4,8 +4,12 @@ const XonaModel = require("./xona.model");
 
 async function getXona(req, res) {
   try {
-    const user = await XonaModel.find({});
-    return res.status(200).send(user);
+    const user = await XonaModel.find({})
+    if (user.length > 0) {
+      return res.status(200).send(user);
+    } else {
+      return res.status(404).send(user);
+    }
   } catch (err) {
     res.status(400).send(err);
   }

@@ -15,30 +15,46 @@ async function getReport(req, res) {
     res.status(400).send(err);
   }
 }
+//Bosh sahifa uchun filterlangan reportlar
+// .find({$expr:{$eq:[{$month:"$fullFData"},6,{$year:"$fullFData"},2022]}})
 async function getReport1(req, res) {
   try {
-    const contact = await ReportModel.find({});
-    return res.status(200).send(contact);
+    const report = await ReportModel.find({
+      date: {
+        $gt: req.body.from,
+        $lt: req.body.to,
+      },
+    })
+      .skip((req.body.quantity - 1) * req.body.step)
+      .limit(req.body.step);
+    if (report.length > 0) {
+      return res.status(200).send(report);
+    } else {
+      return res.status(404).send(report);
+    }
   } catch (err) {
     res.status(400).send(err);
   }
 }
-// filter uchun
+// Hisobot uchun filterlangan reportni hizmatlari
 async function getReportFilter(req, res) {
   try {
+    // console.log(req.body);
     const report = await ReportModel.find({});
+
     const foo = report.filter(
       (e) =>
-        new Date(e.fullFData).getFullYear() === req.body.year * 1 &&
-        new Date(e.fullFData).getMonth() + 1 === req.body.month * 1 &&
+        new Date(e.date).getFullYear() === req.body.year * 1 &&
+        new Date(e.date).getMonth()=== req.body.month * 1 &&
         e.tasdiq === true
     );
+
+ 
     if (foo && req.body.stat === true) {
       const newArray = [];
       foo.map((e) => e.services.map((i) => newArray.push(i)));
+      console.log(newArray);
       return res.status(200).send(newArray);
-    } else if (foo) {
-      return res.status(200).send(foo);
     } else {
       return res.status(404).send("Not Found");
     }
@@ -63,8 +79,36 @@ async function getReport2(req, res) {
 
 async function addReport(req, res) {
   try {
-    const contact = await ReportModel.create(req.body);
-    return res.status(200).send(contact);
+    // O'zgartiriladi !!! malumot qo'shish uchun
+    for (let i = 0; i < 50; i++) {
+      const x = {
+        userName: `Sirojiddin${i}`,
+        userFish: "Махмудов Сирожиддин Адхамович",
+        userlar: `Сирожиддин${i}`,
+        cilientKabinet: `${i}-xona`,
+        services: [
+          {
+            category: "sistema",
+            type: "sistema",
+          },
+          {
+            category: "hard",
+            type: "hdd",
+          },
+        ],
+        cilientFish: `Doston Valiyev Hoshimjon og'li ${i}`,
+        cilientBolim: `bolim${i}`,
+        tasdiq: true,
+        date: "2022-02-10T22:39:00.746Z",
+        chatID: i,
+        countYear: i,
+        countMonth: i,
+        __v: 1,
+      };
+      const contact = await ReportModel.create(x);
+      console.log(contact);
+    }
+    // return res.status(200).send(contact);
   } catch (err) {
     res.status(400).send(err);
   }
