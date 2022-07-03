@@ -7,7 +7,7 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:5000](http://localhost:5000) to view it in your compyuter.
 
-[http://localhost:5000/login](http://localhost:5000/login) JWT olish uchun `POST` login `saidmurod` password `admin`
+[http://localhost:5000/login](http://localhost:5000/login) JWT olish uchun `POST` login `saidmurod` password `admin`\
 [http://localhost:5000/cilient](http://localhost:5000/cilient) Buyrtmachi ma'lumotari `GET POST UPDATE DELETE`
 [http://localhost:5000/user](http://localhost:5000/user) Texnik hizmat ko'rsatish xodimi `GET POST UPDATE DELETE`
 [http://localhost:5000/report](http://localhost:5000/report) Bajarilgan ishlar `GET POST UPDATE DELETE`
