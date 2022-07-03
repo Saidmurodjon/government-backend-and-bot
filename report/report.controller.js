@@ -39,21 +39,20 @@ async function getReport1(req, res) {
 // Hisobot uchun filterlangan reportni hizmatlari
 async function getReportFilter(req, res) {
   try {
-    // console.log(req.body);
-    const report = await ReportModel.find({});
+    const month = req.body.month;
+    const year = req.body.year;
+    const report = await ReportModel.find({
+      date: {
+        $gt: `${year}-${month}`,
+        $lt: `${year}-${month * 1 + 1}`,
+      },
+    });
 
-    const foo = report.filter(
-      (e) =>
-        new Date(e.date).getFullYear() === req.body.year * 1 &&
-        new Date(e.date).getMonth()=== req.body.month * 1 &&
-        e.tasdiq === true
-    );
-
- 
-    if (foo && req.body.stat === true) {
+    console.log(report.length);
+    if (report && req.body.stat === true) {
       const newArray = [];
-      foo.map((e) => e.services.map((i) => newArray.push(i)));
-      console.log(newArray);
+      report.map((e) => e.services.map((i) => newArray.push(i)));
+      // console.log(newArray);
       return res.status(200).send(newArray);
     } else {
       return res.status(404).send("Not Found");
