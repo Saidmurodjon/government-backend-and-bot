@@ -5,7 +5,7 @@ const reportController = require('./report.controller')
 
 // get
 
-router.route('/:id').get(reportController.getReport)
+router.route('/').get(reportController.getReport)
 
 router.route('/next').post(reportController.getReport1)
 // filter uchun

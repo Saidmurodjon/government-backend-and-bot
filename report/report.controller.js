@@ -4,15 +4,11 @@ const ReportModel = require("./report.model");
 
 async function getReport(req, res) {
   try {
-    let id = req.params.id;
-    if (id) {
-      let report = await ReportModel.findOne({ _id: id });
-      return res.status(200).send(report);
-    }
+    const report = await ReportModel.find({ tasdiq: false });
 
-    return res.status(400).send("id is not fine");
+    return res.status(200).send(report);
   } catch (err) {
-    res.status(400).send(err);
+    res.status(404).send(err);
   }
 }
 //Bosh sahifa uchun filterlangan reportlar
@@ -48,7 +44,6 @@ async function getReportFilter(req, res) {
       },
     });
 
-    console.log(report.length);
     if (report && req.body.stat === true) {
       const newArray = [];
       report.map((e) => e.services.map((i) => newArray.push(i)));
@@ -78,38 +73,12 @@ async function getReport2(req, res) {
 
 async function addReport(req, res) {
   try {
-    // O'zgartiriladi !!! malumot qo'shish uchun
-    for (let i = 0; i < 50; i++) {
-      const x = {
-        userName: `Sirojiddin${i}`,
-        userFish: "Махмудов Сирожиддин Адхамович",
-        userlar: `Сирожиддин${i}`,
-        cilientKabinet: `${i}-xona`,
-        services: [
-          {
-            category: "sistema",
-            type: "sistema",
-          },
-          {
-            category: "hard",
-            type: "hdd",
-          },
-        ],
-        cilientFish: `Doston Valiyev Hoshimjon og'li ${i}`,
-        cilientBolim: `bolim${i}`,
-        tasdiq: true,
-        date: "2022-02-10T22:39:00.746Z",
-        chatID: i,
-        countYear: i,
-        countMonth: i,
-        __v: 1,
-      };
-      const contact = await ReportModel.create(x);
-      console.log(contact);
-    }
-    // return res.status(200).send(contact);
+    const contact = await ReportModel.create(req.body);
+
+    return res.status(201).send(contact);
   } catch (err) {
     res.status(400).send(err);
+    console.log(err);
   }
 }
 
@@ -119,13 +88,12 @@ async function updateReport(req, res) {
   try {
     let userId = req.params.id;
     let repo = await ReportModel.findOne({ _id: userId });
-    // console.log(repo)
-    repo.userName = req.body.userName;
+     repo.userName = req.body.userName;
     repo.userFish = req.body.userFish;
-    repo.userlav = req.body.userlav;
+    repo.userLavozim = req.body.userLavozim;
     repo.services = req.body.services;
-    let foo = await repo.save();
-    return res.status(200).send(foo);
+    const foo = await repo.save();
+    return res.status(205).send(foo);
   } catch (err) {
     return res.status(400).send(err);
   }

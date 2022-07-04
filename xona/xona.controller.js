@@ -19,8 +19,14 @@ async function getXona(req, res) {
 
 async function addXona(req, res) {
   try {
-    const user = await XonaModel.create(req.body);
-    return res.status(200).send(user);
+    for (let i = 0; i < 100; i++) {
+      const s ={
+        name: i + 1 + "-xona",
+        date: new Date(),
+      }
+      const user = await XonaModel.create(s);
+      console.log(user);
+    }
   } catch (err) {
     res.status(400).send(err);
   }

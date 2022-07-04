@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
 
   jwt.verify(token, config.secretKey, (err, a) => {
     if (err) {
-      return res.status(401).send("Token eskirgan");
+      return res.status(401).send("Unauthorized");
     }
     return next();
   });

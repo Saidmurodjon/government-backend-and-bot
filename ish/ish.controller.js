@@ -16,7 +16,7 @@ async function getIsh(req, res) {
 async function addIsh(req, res) {
   try {
     const user = await IshModel.create(req.body);
-    return res.status(200).send(user);
+    return res.status(201).send(user);
   } catch (err) {
     res.status(400).send(err);
   }
@@ -28,7 +28,7 @@ async function updateIsh(req, res) {
   try {
     let userId = req.params.id;
     let result = await IshModel.findByIdAndUpdate(userId, req.body);
-    return res.status(200).send(result);
+    return res.status(205).send(result);
   } catch (err) {
     res.status(400).send(err);
   }

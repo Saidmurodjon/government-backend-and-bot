@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const reportSchema = mongoose.Schema({
   userName: String,
   userFish: String,
-  userlav: String,
+  userLavozim: String,
   services: [Object],
   cilientFish: String,
   cilientBolim: String,

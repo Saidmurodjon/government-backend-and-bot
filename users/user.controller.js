@@ -18,7 +18,7 @@ async function getUser(req, res) {
 async function addUser(req, res) {
   try {
     const user = await UserModel.create(req.body);
-    return res.status(200).send(user);
+    return res.status(201).send(user);
   } catch (err) {
     res.status(400).send(err);
   }
@@ -30,7 +30,7 @@ async function updateUser(req, res) {
   try {
     let userId = req.params.id;
     let result = await UserModel.findByIdAndUpdate(userId, req.body);
-    return res.status(200).send(result);
+    return res.status(205).send(result);
   } catch (err) {
     res.status(400).send(err);
   }
