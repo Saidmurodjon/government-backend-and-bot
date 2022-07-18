@@ -4,7 +4,8 @@ const XonaModel = require("./xona.model");
 
 async function getXona(req, res) {
   try {
-    const user = await XonaModel.find({})
+    const tashkilot_id = req.headers["tashkilot_id"];
+    const user = await XonaModel.find({ tashkilot_id: tashkilot_id });
     if (user.length > 0) {
       return res.status(200).send(user);
     } else {
@@ -19,14 +20,8 @@ async function getXona(req, res) {
 
 async function addXona(req, res) {
   try {
-    for (let i = 0; i < 100; i++) {
-      const s ={
-        name: i + 1 + "-xona",
-        date: new Date(),
-      }
-      const user = await XonaModel.create(s);
-      console.log(user);
-    }
+    const user = await XonaModel.create(req.body);
+    return res.status(200).send(user);
   } catch (err) {
     res.status(400).send(err);
   }

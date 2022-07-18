@@ -5,7 +5,8 @@ const ServicesModel = require('./services.model')
 
 async function getServices(req, res) {
     try {
-        const servic = await ServicesModel.find({})
+    const tashkilot_id = req.headers["tashkilot_id"];
+        const servic = await ServicesModel.find({tashkilot_id:tashkilot_id})
         return res.status(200).send(servic)
     } catch (err) {
         res.status(400).send(err)

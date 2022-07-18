@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const TashkilotModel = require("../tashkilot/tashkilot.model");
 const UserModel = require("../users/user.model");
 const config = require("./config");
+// console.log(LOGIN);
 router.route("/").post(async (req, res) => {
   try {
     let tash = await TashkilotModel.findOne({
@@ -26,6 +27,7 @@ router.route("/").post(async (req, res) => {
       return res.status(200).json({
         jwt_token: jwtToken,
         message: tash,
+        role: "user",
       });
     } else if (user) {
       const jwtToken = jwt.sign(
@@ -38,6 +40,21 @@ router.route("/").post(async (req, res) => {
       return res.status(200).json({
         jwt_token: jwtToken,
         user: user,
+      });
+    } else if (
+      req.body.login === "supperadmin" &&
+      req.body.password === "supper@admin"
+    ) {
+      const jwtToken = jwt.sign(
+        { message: "token created" },
+        config.secretKey,
+        {
+          expiresIn: config.expiresAt,
+        }
+      );
+      return res.status(200).json({
+        jwt_token: jwtToken,
+        role: "admin",
       });
     } else {
       return res.status(401).json({

@@ -12,11 +12,12 @@ const reportSchema = mongoose.Schema({
   cilientKabinet: String,
   tasdiq: Boolean,
   chatID: String,
-  date: Date,
   chatID: String,
   countYear: Number,
   countMonth: Number,
-  xona:String
+  xona: String,
+  tashkilot_id: String,
+  date: Date,
 });
 
 const ReportModel = mongoose.model("ReportModel", reportSchema);

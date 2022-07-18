@@ -4,7 +4,8 @@ const BolimModel = require("./bolim.model");
 
 async function getBolim(req, res) {
   try {
-    const user = await BolimModel.find({});
+    const tashkilot_id = req.headers["tashkilot_id"];
+    const user = await BolimModel.find({ tashkilot_id: tashkilot_id });
     return res.status(200).send(user);
   } catch (err) {
     res.status(400).send(err);

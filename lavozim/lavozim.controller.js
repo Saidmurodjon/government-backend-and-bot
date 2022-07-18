@@ -4,7 +4,8 @@ const LavozimModel = require("./lavozim.model");
 
 async function getLavozim(req, res) {
   try {
-    const Lavozim = await LavozimModel.find({});
+    const tashkilot_id = req.headers["tashkilot_id"];
+    const Lavozim = await LavozimModel.find({tashkilot_id:tashkilot_id});
     return res.status(200).send(Lavozim);
   } catch (err) {
     res.status(400).send(err);

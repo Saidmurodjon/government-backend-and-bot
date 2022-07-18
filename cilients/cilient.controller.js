@@ -4,7 +4,9 @@ const CilientModel = require("./cilient.model");
 
 async function getCilient(req, res) {
   try {
-    const user = await CilientModel.find({});
+    const tashkilot_id = req.headers["tashkilot_id"];
+
+    const user = await CilientModel.find({ tashkilot_id: tashkilot_id });
     if (user.length > 0) {
       return res.status(200).send(user);
     } else {

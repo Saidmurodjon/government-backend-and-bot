@@ -4,7 +4,11 @@ const ReportModel = require("./report.model");
 
 async function getReport(req, res) {
   try {
-    const report = await ReportModel.find({ tasdiq: false });
+    const tashkilot_id = req.headers["tashkilot_id"];
+    const report = await ReportModel.find({
+      tasdiq: false,
+      tashkilot_id: tashkilot_id,
+    });
 
     return res.status(200).send(report);
   } catch (err) {
@@ -15,7 +19,9 @@ async function getReport(req, res) {
 // .find({$expr:{$eq:[{$month:"$fullFData"},6,{$year:"$fullFData"},2022]}})
 async function getReport1(req, res) {
   try {
+    const tashkilot_id = req.headers["tashkilot_id"];
     const report = await ReportModel.find({
+      tashkilot_id: tashkilot_id,
       date: {
         $gt: req.body.from,
         $lt: req.body.to,
@@ -35,9 +41,11 @@ async function getReport1(req, res) {
 // Hisobot uchun filterlangan reportni hizmatlari
 async function getReportFilter(req, res) {
   try {
+    const tashkilot_id = req.headers["tashkilot_id"];
     const month = req.body.month;
     const year = req.body.year;
     const report = await ReportModel.find({
+      tashkilot_id: tashkilot_id,
       date: {
         $gt: `${year}-${month}`,
         $lt: `${year}-${month * 1 + 1}`,
@@ -88,7 +96,7 @@ async function updateReport(req, res) {
   try {
     let userId = req.params.id;
     let repo = await ReportModel.findOne({ _id: userId });
-     repo.userName = req.body.userName;
+    repo.userName = req.body.userName;
     repo.userFish = req.body.userFish;
     repo.userLavozim = req.body.userLavozim;
     repo.services = req.body.services;

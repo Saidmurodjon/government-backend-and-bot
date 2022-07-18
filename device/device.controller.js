@@ -4,7 +4,8 @@ const DeviceModel = require("./device.model");
 
 async function getDevice(req, res) {
   try {
-    const device = await DeviceModel.find({});
+    const tashkilot_id = req.headers["tashkilot_id"];
+    const device = await DeviceModel.find({ tashkilot_id: tashkilot_id });
     return res.status(200).send(device);
   } catch (err) {
     res.status(400).send(err);

@@ -3,7 +3,8 @@ const UserModel = require("./user.model");
 // get
 async function getUser(req, res) {
   try {
-    const user = await UserModel.find({});
+    const tashkilot_id = req.headers["tashkilot_id"];
+    const user = await UserModel.find({ tashkilot_id: tashkilot_id });
     if (user.length > 0) {
       return res.status(200).send(user);
     } else {

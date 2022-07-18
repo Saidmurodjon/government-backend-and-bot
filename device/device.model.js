@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const deviceSchema = mongoose.Schema({
   name: String,
+  tashkilot_id: String,
   date: Date,
 });
 

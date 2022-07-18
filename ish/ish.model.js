@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const ishSchema = mongoose.Schema({
   name: String,
+  tashkilot_id: String,
   date: Date,
 });
 

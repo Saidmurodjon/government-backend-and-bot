@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const lavozimSchema = mongoose.Schema({
   name: String,
+  tashkilot_id: String,
   date: Date,
 });
 

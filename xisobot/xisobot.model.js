@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const xisobotSchema = mongoose.Schema({
   name: String,
+  tashkilot_id: String,
   t1: String,
   t2: String,
   t3: String,

@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const xonaSchema = mongoose.Schema({
   name: String,
+  tashkilot_id: String,
   date: Date,
 });
 
