@@ -12,10 +12,9 @@ const reportSchema = mongoose.Schema({
   cilientKabinet: String,
   tasdiq: Boolean,
   chatID: String,
-  chatID: String,
+  state: String,
   countYear: Number,
   countMonth: Number,
-  xona: String,
   tashkilot_id: String,
   date: Date,
 });

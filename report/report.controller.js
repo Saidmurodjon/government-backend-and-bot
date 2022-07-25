@@ -19,12 +19,15 @@ async function getReport(req, res) {
 // .find({$expr:{$eq:[{$month:"$fullFData"},6,{$year:"$fullFData"},2022]}})
 async function getReport1(req, res) {
   try {
+    console.log(req.body);
     const tashkilot_id = req.headers["tashkilot_id"];
+    const f = new Date(req.body.from).toISOString();
+    const t = new Date(req.body.to).toISOString();
     const report = await ReportModel.find({
       tashkilot_id: tashkilot_id,
       date: {
-        $gt: req.body.from,
-        $lt: req.body.to,
+        $gt: f,
+        $lt: t,
       },
     })
       .skip((req.body.quantity - 1) * req.body.step)
@@ -35,6 +38,7 @@ async function getReport1(req, res) {
       return res.status(404).send(report);
     }
   } catch (err) {
+    console.log(err);
     res.status(400).send(err);
   }
 }
