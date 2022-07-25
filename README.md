@@ -7,7 +7,7 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:5000](http://localhost:5000) to view it in your compyuter.\
 
-- JWT olish uchun `POST` login `saidmurod` password `admin`
+- JWT olish uchun `POST` login `something` password `any`
 
 [http://localhost:5000/login](http://localhost:5000/login)
 
