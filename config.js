@@ -4,6 +4,6 @@ module.exports = {
   MONGODB: env.MONGODB_URL,
   TOKEN: env.TOKEN,
   BaseURL:env.BaseURL,
-  PORT:env.PORT
-
+  PORT:env.PORT,
+  CHANNEL_ID:env.CHANNEL_ID
 };

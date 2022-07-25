@@ -5,8 +5,8 @@ const InlineKeyboards = require("./keyboards/InlineKeyboards");
 const CilientModel = require("../cilients/cilient.model");
 const QRCode = require("qrcode");
 const fs = require("fs");
-
-const chanel_id = -1001594273678;
+const { CHANNEL_ID } = require("../config");
+const chanel_id =CHANNEL_ID;
 module.exports = class Functions {
   // User saqlash
   static async setUser(ctx) {
