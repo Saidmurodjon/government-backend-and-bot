@@ -22,8 +22,8 @@ mongoose
   .catch((err) => {
     console.error(`Error connecting to the database. \n${err}`);
   });
+// bot uchun
   const bot = new Telegraf(TOKEN);
-
   app.use(bot.webhookCallback("/"));
   bot.telegram.setWebhook(BaseURL);
 app.use("/", appRouter);
@@ -32,7 +32,7 @@ app.use("/", appRouter);
 app.listen(PORT, () => {
   console.log(`${PORT}'s port is working`);
 });
-
+// bot uchun
 async function Main() {
   await bot.on(
     "message",
