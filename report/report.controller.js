@@ -24,6 +24,7 @@ async function getReport1(req, res) {
 
     const report = await ReportModel.find({
       tashkilot_id: tashkilot_id,
+      tasdiq: false,
       date: {
         $gt: req.body.from,
         $lt: req.body.to,
