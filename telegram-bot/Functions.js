@@ -211,7 +211,7 @@ module.exports = class Functions {
             // },
           };
           const qrCode = await QRCode.toFile(
-            `./telegram-bot/uploads/${category._id.toString()}.png`,
+            `./uploads/${category._id.toString()}.png`,
             category._id.toString(),
             opts
           );
@@ -219,7 +219,7 @@ module.exports = class Functions {
           await ctx.telegram.sendPhoto(
             chat_id,
             {
-              source: `./telegram-bot/uploads/${category._id}.png`,
+              source: `./uploads/${category._id}.png`,
             },
             {
               caption: `Scaner qiling \n Topshiriq No_ ${countYear.length + 1}`,
@@ -245,7 +245,7 @@ module.exports = class Functions {
             { parse_mode: "HTML" }
           );
           fs.unlink(
-            (__dirname, `./telegram-bot/uploads/${category._id}.png`),
+            (__dirname, `./uploads/${category._id}.png`),
             function (err) {
               if (err) {
                 console.error(err);
@@ -314,14 +314,14 @@ module.exports = class Functions {
           // },
         };
         const qrCode = await QRCode.toFile(
-          `./telegram-bot/uploads/${report._id.toString()}.png`,
+          `./uploads/${report._id.toString()}.png`,
           report._id.toString(),
           opts
         );
 
         await ctx.telegram.sendPhoto(
           chat_id,
-          { source: `./telegram-bot/uploads/${report._id}.png` },
+          { source: `./uploads/${report._id}.png` },
           {
             caption: `Scaner qiling \n Topshiriq No_ ${report.countYear}`,
             reply_markup: {
@@ -332,7 +332,7 @@ module.exports = class Functions {
           }
         );
         fs.unlink(
-          (__dirname, `./telegram-bot/uploads/${report._id}.png`),
+          (__dirname, `./uploads/${report._id}.png`),
           function (err) {
             if (err) {
               console.error(err);
