@@ -219,9 +219,11 @@ module.exports = class Functions {
           await ctx.telegram.sendPhoto(
             chat_id,
             {
-              source: `./uploads/${category._id}.png`,caption: `Scaner qiling \n Topshiriq No_ ${countYear.length + 1}`,
+              source: `./uploads/${category._id}.png`,
             },
-        
+            {
+              caption: `Scaner qiling \n Topshiriq No_ ${countYear.length + 1}`,
+            }
             // {
             //   reply_markup: {
             //     resize_keyboard: true,
@@ -296,7 +298,7 @@ module.exports = class Functions {
     try {
       const user = await BotUserModel.findOne({ chatID: chat_id });
       if (user) {
-        const client = await CilientModel.findOne({ phone: user.phone });
+        // const client = await CilientModel.findOne({ phone: user.phone });
         const report = await ReportModel.findOne({
           chatID: chat_id,
           tasdiq: false,
@@ -311,7 +313,7 @@ module.exports = class Functions {
           //   light: "#FFBF60FF",
           // },
         };
-        const qrCode = await QRCode.toFile(
+        await QRCode.toFile(
           `./uploads/${report._id.toString()}.png`,
           report._id.toString(),
           opts
@@ -319,9 +321,9 @@ module.exports = class Functions {
 
         await ctx.telegram.sendPhoto(
           chat_id,
-          { source: `./uploads/${report._id}.png`,caption: `Scaner qiling \n Topshiriq No_ ${report.countYear}`, },
+          { source: `./uploads/${report._id}.png` },
           {
-            
+            caption: `Scaner qiling \n Topshiriq No_ ${report.countYear}`,
             reply_markup: {
               resize_keyboard: true,
               one_time_keyboard: true,
@@ -329,14 +331,14 @@ module.exports = class Functions {
             },
           }
         );
-        fs.unlink(
-          (__dirname, `./uploads/${report._id}.png`),
-          function (err) {
-            if (err) {
-              console.error(err);
-            }
-          }
-        );
+        // fs.unlink(
+        //   (__dirname, `./uploads/${report._id}.png`),
+        //   function (err) {
+        //     if (err) {
+        //       console.error(err);
+        //     }
+        //   }
+        // );
       }
 
       // console.log(message);
