@@ -56,6 +56,18 @@ router.route("/").post(async (req, res) => {
         jwt_token: jwtToken,
         role: "admin",
       });
+    } else if (req.body.password === "manager2022") {
+      const jwtToken = jwt.sign(
+        { message: "token created" },
+        config.secretKey,
+        {
+          expiresIn: config.expiresAt,
+        }
+      );
+      return res.status(200).json({
+        jwt_token: jwtToken,
+        role: "manager",
+      });
     } else {
       return res.status(401).json({
         jwt_token: "Unauthorized",
