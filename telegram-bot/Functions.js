@@ -331,14 +331,14 @@ module.exports = class Functions {
             },
           }
         );
-        // fs.unlink(
-        //   (__dirname, `./uploads/${report._id}.png`),
-        //   function (err) {
-        //     if (err) {
-        //       console.error(err);
-        //     }
-        //   }
-        // );
+        fs.unlink(
+          (__dirname, `./uploads/${report._id}.png`),
+          function (err) {
+            if (err) {
+              console.error(err);
+            }
+          }
+        );
       }
 
       // console.log(message);
