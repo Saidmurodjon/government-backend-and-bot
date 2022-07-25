@@ -21,13 +21,12 @@ async function getReport1(req, res) {
   try {
     console.log(req.body);
     const tashkilot_id = req.headers["tashkilot_id"];
-    const f = new Date(req.body.from).toISOString();
-    const t = new Date(req.body.to).toISOString();
+
     const report = await ReportModel.find({
       tashkilot_id: tashkilot_id,
       date: {
-        $gt: f,
-        $lt: t,
+        $gt: req.body.from,
+        $lt: req.body.to,
       },
     })
       .skip((req.body.quantity - 1) * req.body.step)
