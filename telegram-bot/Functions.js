@@ -219,11 +219,9 @@ module.exports = class Functions {
           await ctx.telegram.sendPhoto(
             chat_id,
             {
-              source: `./uploads/${category._id}.png`,
+              source: `./uploads/${category._id}.png`,caption: `Scaner qiling \n Topshiriq No_ ${countYear.length + 1}`,
             },
-            {
-              caption: `Scaner qiling \n Topshiriq No_ ${countYear.length + 1}`,
-            }
+        
             // {
             //   reply_markup: {
             //     resize_keyboard: true,
@@ -321,9 +319,9 @@ module.exports = class Functions {
 
         await ctx.telegram.sendPhoto(
           chat_id,
-          { source: `./uploads/${report._id}.png` },
+          { source: `./uploads/${report._id}.png`,caption: `Scaner qiling \n Topshiriq No_ ${report.countYear}`, },
           {
-            caption: `Scaner qiling \n Topshiriq No_ ${report.countYear}`,
+            
             reply_markup: {
               resize_keyboard: true,
               one_time_keyboard: true,
